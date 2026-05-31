@@ -365,72 +365,169 @@
     .vestimenta-section {
       max-width:480px; margin:0 auto;
       background:var(--cream);
-      padding:32px 28px;
+      padding:40px 28px 36px;
       text-align:center;
       border-top:1px solid var(--olive-light);
     }
-    .vest-icon { width:90px; margin:0 auto 10px; display:block; }
-    .vest-label {
+    .vest-circle {
+      width:110px; height:110px;
+      border-radius:50%;
+      background:#fff;
+      border:1.5px solid var(--olive-light);
+      box-shadow:0 6px 24px rgba(107,124,61,0.12);
+      display:flex; align-items:center; justify-content:center;
+      margin:0 auto 20px;
+    }
+    .vest-tipo {
       font-family:'Montserrat',sans-serif;
-      font-size:0.78rem; letter-spacing:3px;
-      color:var(--olive-dark); text-transform:uppercase;
-      margin-bottom:6px; font-weight:600;
+      font-size:0.65rem; letter-spacing:3px;
+      color:var(--olive); text-transform:uppercase; margin-bottom:4px;
     }
-    .vest-note {
+    .vest-formal {
       font-family:'Cormorant Garamond',serif;
-      font-size:0.9rem; color:#888; letter-spacing:1px;
+      font-size:1.5rem; font-style:italic; font-weight:600;
+      color:var(--olive-dark); margin-bottom:20px;
     }
-    .vest-colors {
-      display:flex; justify-content:center; gap:10px; margin-top:12px;
+    .vest-evitar {
+      font-family:'Montserrat',sans-serif;
+      font-size:0.62rem; letter-spacing:2px;
+      color:#aaa; text-transform:uppercase; margin-bottom:14px;
     }
-    .vest-color-chip {
-      display:flex; flex-direction:column; align-items:center; gap:4px;
-      font-family:'Montserrat',sans-serif; font-size:0.58rem;
-      color:#999; letter-spacing:1px; text-transform:uppercase;
+    .vest-colors { display:flex; justify-content:center; gap:18px; }
+    .vest-chip {
+      display:flex; flex-direction:column; align-items:center; gap:6px;
+      font-family:'Montserrat',sans-serif; font-size:0.6rem;
+      color:#aaa; letter-spacing:1px; text-transform:uppercase;
     }
-    .vest-color-circle {
-      width:28px; height:28px; border-radius:50%;
-      border:1.5px solid #ddd;
+    .vest-circle-color {
+      width:34px; height:34px; border-radius:50%;
+      border:1.5px solid #e0e0e0;
+      box-shadow:0 2px 6px rgba(0,0,0,0.08);
     }
 
     /* ══ REGALOS ══ */
     .regalos-section {
       max-width:480px; margin:0 auto;
       background:#fff;
-      padding:36px 32px;
+      padding:40px 32px 36px;
       text-align:center;
       border-top:1px solid var(--olive-light);
     }
+    .regalo-icon-bg {
+      width:72px; height:72px;
+      background:var(--olive-light);
+      border-radius:50%;
+      display:flex; align-items:center; justify-content:center;
+      margin:0 auto 18px;
+    }
     .regalos-text {
       font-family:'Cormorant Garamond',serif;
-      font-size:1.05rem; color:var(--text);
-      line-height:1.85; letter-spacing:0.2px;
+      font-size:1.08rem; color:var(--text);
+      line-height:2; letter-spacing:0.2px;
     }
 
     /* ══ RSVP ══ */
     .rsvp-section {
       max-width:480px; margin:0 auto;
-      background:var(--cream);
-      padding:36px 28px 44px;
+      background:var(--olive-dark);
+      padding:44px 28px 52px;
       text-align:center;
-      border-top:1px solid var(--olive-light);
     }
-    .rsvp-icon { width:80px; margin:0 auto 18px; display:block; }
+    .rsvp-section .section-title { color:#fff; }
+    .rsvp-note {
+      font-family:'Cormorant Garamond',serif;
+      font-size:1.05rem; color:rgba(255,255,255,0.75);
+      margin-bottom:28px; line-height:1.7;
+    }
     .rsvp-btn {
       display:inline-block;
-      background:var(--olive-dark);
-      color:#fff;
+      background:#fff;
+      color:var(--olive-dark);
       font-family:'Montserrat',sans-serif;
-      font-size:0.78rem; font-weight:600;
+      font-size:0.78rem; font-weight:700;
       letter-spacing:3px; text-transform:uppercase;
       text-decoration:none;
-      padding:14px 30px;
-      border-radius:3px;
-      box-shadow:0 4px 16px rgba(74,88,40,0.3);
-      transition:background 0.2s, transform 0.15s;
+      padding:16px 36px;
+      border-radius:50px;
+      box-shadow:0 8px 24px rgba(0,0,0,0.2);
+      cursor:pointer; border:none;
+      transition:transform 0.15s, box-shadow 0.2s;
     }
+    .rsvp-btn:hover  { transform:translateY(-2px); box-shadow:0 12px 30px rgba(0,0,0,0.25); }
     .rsvp-btn:active { transform:scale(0.97); }
-    .rsvp-btn:hover  { background:var(--olive); }
+
+    /* ── Modal formulario ── */
+    .modal-overlay {
+      position:fixed; inset:0;
+      background:rgba(0,0,0,0.55);
+      z-index:2000;
+      display:flex; align-items:flex-end; justify-content:center;
+      opacity:0; pointer-events:none;
+      transition:opacity 0.3s ease;
+    }
+    .modal-overlay.open { opacity:1; pointer-events:auto; }
+    .modal-card {
+      background:#fff;
+      width:100%; max-width:480px;
+      border-radius:20px 20px 0 0;
+      padding:28px 26px 40px;
+      transform:translateY(100%);
+      transition:transform 0.42s cubic-bezier(0.22,0.88,0.36,1);
+    }
+    .modal-overlay.open .modal-card { transform:translateY(0); }
+    .modal-handle {
+      width:44px; height:5px;
+      background:#e0e0e0; border-radius:3px;
+      margin:0 auto 22px;
+    }
+    .modal-title {
+      font-family:'Dancing Script',cursive;
+      font-size:1.8rem; color:var(--olive-dark);
+      text-align:center; margin-bottom:22px;
+    }
+    .form-group { margin-bottom:16px; }
+    .form-label {
+      display:block;
+      font-family:'Montserrat',sans-serif;
+      font-size:0.62rem; letter-spacing:2px;
+      color:var(--olive); text-transform:uppercase; margin-bottom:7px;
+    }
+    .form-input, .form-select {
+      width:100%; padding:12px 14px;
+      border:1.5px solid var(--olive-light);
+      border-radius:8px;
+      font-family:'Cormorant Garamond',serif;
+      font-size:1.05rem; color:var(--text);
+      background:var(--cream); outline:none;
+      transition:border-color 0.2s;
+      appearance:none;
+    }
+    .form-input:focus, .form-select:focus { border-color:var(--olive-mid); }
+    .form-row { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+    .form-btns { display:flex; gap:12px; margin-top:22px; }
+    .btn-cancel {
+      flex:1; padding:13px;
+      border:1.5px solid #e0e0e0; border-radius:8px;
+      background:#fff; color:#aaa;
+      font-family:'Montserrat',sans-serif;
+      font-size:0.7rem; letter-spacing:1.5px;
+      text-transform:uppercase; cursor:pointer;
+    }
+    .btn-send {
+      flex:2; padding:13px; border:none; border-radius:8px;
+      background:var(--olive-dark); color:#fff;
+      font-family:'Montserrat',sans-serif;
+      font-size:0.72rem; font-weight:700;
+      letter-spacing:2px; text-transform:uppercase;
+      cursor:pointer; transition:background 0.2s;
+    }
+    .btn-send:hover { background:var(--olive); }
+    .form-success { display:none; text-align:center; padding:16px 0; }
+    .form-success .s-icon { font-size:3rem; display:block; margin-bottom:12px; }
+    .form-success p {
+      font-family:'Cormorant Garamond',serif;
+      font-size:1.1rem; color:var(--olive-dark); line-height:1.7;
+    }
 
     /* Pie final */
     .page-footer {
@@ -808,50 +905,41 @@
 
 <!-- ══ VESTIMENTA ══ -->
 <div class="vestimenta-section">
-  <!-- Icono vestimenta SVG -->
-  <svg class="vest-icon" viewBox="0 0 100 90" xmlns="http://www.w3.org/2000/svg">
-    <!-- Vestido (izquierda) -->
-    <g fill="none" stroke="#4a5828" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <!-- cuerpo vestido -->
-      <path d="M 28,12 Q 22,8 18,14 L 10,28 L 22,28 L 18,72 L 38,72 L 34,28 L 46,28 L 42,14 Q 38,8 32,12"/>
-      <!-- escote -->
-      <path d="M 28,12 Q 30,20 32,12"/>
-      <!-- faldón curvo -->
-      <path d="M 18,72 Q 28,82 38,72"/>
-    </g>
-    <!-- Traje (derecha) -->
-    <g fill="none" stroke="#4a5828" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <!-- cuerpo traje -->
-      <rect x="58" y="28" width="26" height="44" rx="2"/>
-      <!-- cabeza -->
-      <circle cx="71" cy="16" r="8"/>
-      <!-- solapas -->
-      <path d="M 71,28 L 64,38 M 71,28 L 78,38"/>
-      <!-- corbata/moño -->
-      <path d="M 68,38 L 71,44 L 74,38 L 71,40 Z" fill="#4a5828"/>
-      <!-- botones -->
-      <circle cx="71" cy="50" r="1.5" fill="#4a5828"/>
-      <circle cx="71" cy="58" r="1.5" fill="#4a5828"/>
-      <!-- pantalón -->
-      <line x1="67" y1="72" x2="65" y2="88"/>
-      <line x1="75" y1="72" x2="77" y2="88"/>
-    </g>
-  </svg>
-
-  <div class="vest-label">Código de Vestimenta</div>
-  <div class="vest-label" style="font-size:1rem;letter-spacing:1px;color:var(--olive);margin-bottom:10px">Formal</div>
-  <div class="vest-note">Evitar colores:</div>
+  <div class="vest-circle">
+    <svg width="80" height="80" viewBox="0 0 100 90" xmlns="http://www.w3.org/2000/svg">
+      <!-- Vestido -->
+      <g fill="none" stroke="#4a5828" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M 27,11 Q 21,7 17,13 L 8,27 L 21,27 L 17,73 L 39,73 L 35,27 L 48,27 L 44,13 Q 40,7 33,11"/>
+        <path d="M 27,11 Q 30,19 33,11"/>
+        <path d="M 17,73 Q 28,84 39,73"/>
+      </g>
+      <!-- Traje -->
+      <g fill="none" stroke="#4a5828" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="71" cy="14" r="8"/>
+        <path d="M 58,27 L 58,73 L 84,73 L 84,27 Z"/>
+        <path d="M 71,27 L 63,40 M 71,27 L 79,40"/>
+        <path d="M 68,40 L 71,47 L 74,40 L 71,42 Z" fill="#4a5828"/>
+        <circle cx="71" cy="54" r="2" fill="#4a5828" stroke="none"/>
+        <circle cx="71" cy="63" r="2" fill="#4a5828" stroke="none"/>
+        <line x1="65" y1="73" x2="63" y2="88"/>
+        <line x1="77" y1="73" x2="79" y2="88"/>
+      </g>
+    </svg>
+  </div>
+  <div class="vest-tipo">Código de Vestimenta</div>
+  <div class="vest-formal">Formal</div>
+  <div class="vest-evitar">Evitar estos colores</div>
   <div class="vest-colors">
-    <div class="vest-color-chip">
-      <div class="vest-color-circle" style="background:#fff"></div>
+    <div class="vest-chip">
+      <div class="vest-circle-color" style="background:#ffffff"></div>
       <span>Blanco</span>
     </div>
-    <div class="vest-color-chip">
-      <div class="vest-color-circle" style="background:#f5f0e8"></div>
+    <div class="vest-chip">
+      <div class="vest-circle-color" style="background:#f2ebe0"></div>
       <span>Crema</span>
     </div>
-    <div class="vest-color-chip">
-      <div class="vest-color-circle" style="background:#000"></div>
+    <div class="vest-chip">
+      <div class="vest-circle-color" style="background:#111111"></div>
       <span>Negro</span>
     </div>
   </div>
@@ -859,8 +947,17 @@
 
 <!-- ══ SUGERENCIA DE REGALOS ══ -->
 <div class="regalos-section">
+  <div class="regalo-icon-bg">
+    <svg width="38" height="38" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+      <rect x="4" y="16" width="32" height="22" rx="2" fill="none" stroke="#4a5828" stroke-width="2"/>
+      <rect x="2" y="11" width="36" height="7" rx="2" fill="none" stroke="#4a5828" stroke-width="2"/>
+      <line x1="20" y1="11" x2="20" y2="38" stroke="#4a5828" stroke-width="2"/>
+      <path d="M 20,11 Q 16,4 12,6 Q 8,8 12,11 Z" fill="#4a5828" opacity="0.7"/>
+      <path d="M 20,11 Q 24,4 28,6 Q 32,8 28,11 Z" fill="#4a5828" opacity="0.7"/>
+    </svg>
+  </div>
   <div class="section-title">Sugerencia de Regalos</div>
-  <div class="divider" style="margin-bottom:22px"></div>
+  <div class="divider" style="margin-bottom:20px"></div>
   <p class="regalos-text">
     Si deseas hacernos un regalo, agradeceríamos mucho cualquier contribución,
     ya sea en forma de dinero o un detalle de nuestra mesa de regalos,
@@ -871,26 +968,58 @@
 <!-- ══ CONFIRMAR ASISTENCIA ══ -->
 <div class="rsvp-section">
   <div class="section-title">Confirmar Asistencia</div>
-
-  <!-- Icono lista SVG -->
-  <svg class="rsvp-icon" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
-    <rect x="10" y="8" width="52" height="64" rx="4" fill="none" stroke="#4a5828" stroke-width="2.5"/>
-    <rect x="18" y="18" width="36" height="4" rx="2" fill="#8a9a50" opacity="0.6"/>
-    <rect x="18" y="28" width="28" height="4" rx="2" fill="#8a9a50" opacity="0.6"/>
-    <rect x="18" y="38" width="32" height="4" rx="2" fill="#8a9a50" opacity="0.6"/>
-    <!-- Check grande -->
-    <circle cx="52" cy="56" r="16" fill="var(--olive-dark)"/>
-    <polyline points="44,56 50,62 62,50" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-  </svg>
-
-  <p style="font-family:'Cormorant Garamond',serif;font-size:1rem;color:#888;margin-bottom:22px;line-height:1.6">
+  <p class="rsvp-note">
     Acompáñanos cuando demos el "sí, acepto".<br/>
-    Por favor confirma tu asistencia.
+    Por favor confirma tu asistencia antes del 1 de Octubre.
   </p>
-
-  <a href="#" class="rsvp-btn" id="rsvpBtn" target="_blank">
+  <button class="rsvp-btn" onclick="abrirModal()">
     ✓ &nbsp; Confirmar Asistencia
-  </a>
+  </button>
+</div>
+
+<!-- ══ MODAL FORMULARIO ══ -->
+<div class="modal-overlay" id="modalOverlay" onclick="cerrarSiFondo(event)">
+  <div class="modal-card">
+    <div class="modal-handle"></div>
+
+    <!-- Formulario -->
+    <div id="formView">
+      <div class="modal-title">Tu Confirmación</div>
+
+      <div class="form-group">
+        <label class="form-label">Nombre completo</label>
+        <input class="form-input" id="fNombre" type="text" placeholder="Tu nombre" autocomplete="name"/>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group" style="margin-bottom:0">
+          <label class="form-label">Adultos</label>
+          <select class="form-select" id="fAdultos">
+            <option>1</option><option>2</option><option>3</option>
+            <option>4</option><option>5</option><option>6</option>
+          </select>
+        </div>
+        <div class="form-group" style="margin-bottom:0">
+          <label class="form-label">Niños</label>
+          <select class="form-select" id="fNinos">
+            <option>0</option><option>1</option><option>2</option>
+            <option>3</option><option>4</option><option>5</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-btns">
+        <button class="btn-cancel" onclick="cerrarModal()">Cancelar</button>
+        <button class="btn-send"   onclick="enviarConfirmacion()">Enviar ✓</button>
+      </div>
+    </div>
+
+    <!-- Éxito -->
+    <div class="form-success" id="successView">
+      <span class="s-icon">🎉</span>
+      <p>¡Gracias por confirmar!<br/>Abriendo WhatsApp para enviarnos tu confirmación…</p>
+    </div>
+  </div>
 </div>
 
 <!-- Pie final -->
@@ -923,6 +1052,83 @@
   function forcePlay(){
     document.getElementById('music').play();
     document.getElementById('musicBtn').style.display='none';
+  }
+
+  /* ══ MODAL CONFIRMACIÓN ══
+     Para guardar en Google Sheets:
+     1. Abre la hoja: https://docs.google.com/spreadsheets/d/1NZwOE7mpuGZyccia9G9ZFCzTmXzbnIaOsSS3exrW164
+     2. Extensiones → Apps Script → pega este código y guarda:
+
+     function doGet(e){
+       var s=SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+       s.appendRow([new Date(), e.parameter.nombre, e.parameter.adultos, e.parameter.ninos]);
+       return ContentService.createTextOutput('OK');
+     }
+
+     3. Implementar → Nueva implementación → App web
+        Ejecutar como: Yo | Quién tiene acceso: Cualquier usuario
+     4. Copia la URL y reemplaza APPS_SCRIPT_URL abajo.
+  ══════════════════════════════════════════════════ */
+  const APPS_SCRIPT_URL = 'PEGA_AQUI_TU_URL_DE_APPS_SCRIPT';
+
+  function abrirModal() {
+    document.getElementById('modalOverlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function cerrarModal() {
+    document.getElementById('modalOverlay').classList.remove('open');
+    document.body.style.overflow = '';
+    setTimeout(function(){
+      document.getElementById('formView').style.display = 'block';
+      document.getElementById('successView').style.display = 'none';
+      document.getElementById('fNombre').value = '';
+    }, 400);
+  }
+  function cerrarSiFondo(e) {
+    if (e.target === document.getElementById('modalOverlay')) cerrarModal();
+  }
+
+  function enviarConfirmacion() {
+    var nombre  = document.getElementById('fNombre').value.trim();
+    var adultos = document.getElementById('fAdultos').value;
+    var ninos   = document.getElementById('fNinos').value;
+
+    if (!nombre) {
+      document.getElementById('fNombre').focus();
+      document.getElementById('fNombre').style.borderColor = '#c0392b';
+      return;
+    }
+    document.getElementById('fNombre').style.borderColor = '';
+
+    /* 1. Guardar en Google Sheets (no-cors = sin bloqueo CORS) */
+    if (APPS_SCRIPT_URL !== 'PEGA_AQUI_TU_URL_DE_APPS_SCRIPT') {
+      var url = APPS_SCRIPT_URL
+        + '?nombre='  + encodeURIComponent(nombre)
+        + '&adultos=' + adultos
+        + '&ninos='   + ninos;
+      fetch(url, { method: 'GET', mode: 'no-cors' }).catch(function(){});
+    }
+
+    /* 2. Mostrar éxito */
+    document.getElementById('formView').style.display    = 'none';
+    document.getElementById('successView').style.display = 'block';
+
+    /* 3. Abrir WhatsApp con mensaje personalizado */
+    var msg = encodeURIComponent(
+      'Hola Jessica! 😊\n\n'
+      + 'Confirmo mi asistencia a tu boda el 10 de Octubre 🌿\n\n'
+      + '👤 *Nombre:* ' + nombre + '\n'
+      + '👥 *Adultos:* ' + adultos + '\n'
+      + '👶 *Niños:* '   + ninos   + '\n\n'
+      + '¡Los veremos pronto! 💕'
+    );
+    setTimeout(function(){
+      window.open(
+        'https://api.whatsapp.com/send/?phone=51922173088&text=' + msg + '&type=phone_number&app_absent=0',
+        '_blank'
+      );
+      setTimeout(cerrarModal, 800);
+    }, 1200);
   }
 
   /* ── Burbujas SVG del brindis ── */
