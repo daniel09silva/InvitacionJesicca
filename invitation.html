@@ -513,6 +513,54 @@
       line-height:2; letter-spacing:0.2px;
     }
 
+    /* ══ DATOS BANCARIOS ══ */
+    .banco-section {
+      max-width:480px; margin:0 auto;
+      background:var(--cream);
+      padding:36px 28px 32px;
+      text-align:center;
+      border-top:1px solid var(--olive-light);
+    }
+    .banco-block {
+      background:#fff;
+      border:1px solid var(--olive-light);
+      border-radius:10px;
+      padding:18px 20px;
+      margin-bottom:14px;
+      text-align:left;
+    }
+    .banco-block:last-of-type { margin-bottom:0; }
+    .banco-nombre {
+      font-family:'Montserrat',sans-serif;
+      font-size:0.72rem; font-weight:700;
+      color:var(--olive-dark);
+      letter-spacing:1px;
+      text-transform:uppercase;
+      margin-bottom:8px;
+    }
+    .banco-row {
+      display:flex; justify-content:space-between; align-items:baseline;
+      margin-bottom:4px;
+    }
+    .banco-label {
+      font-family:'Montserrat',sans-serif;
+      font-size:0.62rem; letter-spacing:1px;
+      color:#999; text-transform:uppercase;
+      min-width:40px;
+    }
+    .banco-num {
+      font-family:'Cormorant Garamond',serif;
+      font-size:0.95rem; color:#1a1a1a; font-weight:600;
+      text-align:right; word-break:break-all;
+    }
+    .banco-titular {
+      font-family:'Cormorant Garamond',serif;
+      font-size:0.88rem; color:var(--olive-dark);
+      font-style:italic; margin-top:8px;
+      border-top:1px dashed var(--olive-light);
+      padding-top:8px;
+    }
+
     /* ══ RSVP ══ */
     .rsvp-section {
       max-width:480px; margin:0 auto;
@@ -1145,6 +1193,40 @@
     ya sea en forma Tradicional (palpa) o de forma económica,
     sin embargo lo que más valoramos es tu presencia y apoyo en este día tan especial.
   </p>
+</div>
+
+<!-- ══ DATOS BANCARIOS ══ -->
+<div class="banco-section">
+  <div class="section-title" style="margin-bottom:6px;">Datos Bancarios</div>
+  <div class="divider" style="margin-bottom:22px;"></div>
+
+  <!-- Cuenta Humberto -->
+  <div class="banco-block">
+    <div class="banco-nombre">Humberto Lira</div>
+    <div class="banco-row">
+      <span class="banco-label">BCP</span>
+      <span class="banco-num">— — — — — — —</span>
+    </div>
+    <div class="banco-row">
+      <span class="banco-label">CCI</span>
+      <span class="banco-num">— — — — — — —</span>
+    </div>
+    <div class="banco-titular">Titular: Humberto Lira</div>
+  </div>
+
+  <!-- Cuenta Jessica -->
+  <div class="banco-block">
+    <div class="banco-nombre">Jessica</div>
+    <div class="banco-row">
+      <span class="banco-label">BCP</span>
+      <span class="banco-num">— — — — — — —</span>
+    </div>
+    <div class="banco-row">
+      <span class="banco-label">CCI</span>
+      <span class="banco-num">— — — — — — —</span>
+    </div>
+    <div class="banco-titular">Titular: Jessica</div>
+  </div>
 </div>
 
 <!-- ══ CONFIRMAR ASISTENCIA ══ -->
