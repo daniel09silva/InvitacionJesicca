@@ -319,6 +319,87 @@
     .loc-sep-line { flex:1; height:1px; background:var(--olive-light); }
     .loc-sep-dot  { width:6px; height:6px; border-radius:50%; background:var(--olive-mid); }
 
+    /* ══ GALERÍA ══ */
+    .gallery-section {
+      max-width:480px; margin:0 auto;
+      background:#fff;
+      padding:38px 0 28px;
+      border-top:1px solid var(--olive-light);
+      overflow:hidden;
+    }
+    .gallery-header {
+      text-align:center;
+      padding:0 24px 18px;
+    }
+    .gallery-cam {
+      width:48px; height:48px;
+      background:var(--olive-light);
+      border-radius:50%;
+      display:flex; align-items:center; justify-content:center;
+      margin:0 auto 14px;
+    }
+    .gallery-title {
+      font-family:'Dancing Script',cursive;
+      font-size:clamp(1.6rem,5vw,2rem);
+      color:var(--olive-dark);
+      margin-bottom:4px;
+    }
+    .gallery-sub {
+      font-family:'Cormorant Garamond',serif;
+      font-size:0.88rem; color:#aaa; font-style:italic;
+    }
+    .carousel-vp {
+      display:flex; gap:10px;
+      overflow-x:auto;
+      scroll-snap-type:x mandatory;
+      -webkit-overflow-scrolling:touch;
+      padding:8px 80px 12px;
+      scrollbar-width:none;
+    }
+    .carousel-vp::-webkit-scrollbar { display:none; }
+    .c-slide {
+      flex:0 0 calc(100% - 160px);
+      scroll-snap-align:center;
+      border-radius:10px;
+      overflow:hidden;
+      position:relative;
+      transition:transform 0.35s, box-shadow 0.35s, border 0.35s;
+      border:2.5px solid transparent;
+    }
+    .c-slide.active {
+      transform:scale(1.06);
+      box-shadow:0 10px 32px rgba(74,88,40,0.22);
+      border-color:var(--olive-mid);
+    }
+    .c-slide img {
+      width:100%; aspect-ratio:4/5;
+      object-fit:cover; display:block;
+    }
+    .c-slide .c-ph {
+      width:100%; aspect-ratio:4/5;
+      background:var(--olive-light);
+      display:flex; flex-direction:column;
+      align-items:center; justify-content:center;
+      color:var(--olive-mid); gap:8px;
+      font-family:'Montserrat',sans-serif;
+      font-size:0.6rem; letter-spacing:2px; text-transform:uppercase;
+    }
+    .c-slide .c-ph svg { opacity:0.5; }
+    .carousel-dots {
+      display:flex; justify-content:center; gap:8px;
+      margin-top:6px;
+    }
+    .cdot {
+      width:8px; height:8px; border-radius:50%;
+      background:var(--olive-light);
+      cursor:pointer;
+      transition:background 0.3s, transform 0.3s;
+    }
+    .cdot.active {
+      background:var(--olive-mid);
+      transform:scale(1.4);
+    }
+
     /* ══ PROGRAMA DEL EVENTO ══ */
     .programa-section {
       max-width:480px; margin:0 auto;
@@ -887,6 +968,71 @@
 
 </div>
 
+<!-- ══ GALERÍA ══ -->
+<div class="gallery-section">
+  <div class="gallery-header">
+    <div class="gallery-cam">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#6b7c3d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+        <circle cx="12" cy="13" r="4"/>
+      </svg>
+    </div>
+    <div class="gallery-title">Retratos de Nuestro Amor</div>
+    <div class="gallery-sub">Un instante que queda en la eternidad</div>
+  </div>
+
+  <div class="carousel-vp" id="carouselVP">
+    <div class="c-slide" data-idx="0">
+      <img src="img/galeria1.jpg" alt="Foto 1"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+      <div class="c-ph" style="display:none">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+        <span>Foto 1</span>
+      </div>
+    </div>
+    <div class="c-slide" data-idx="1">
+      <img src="img/galeria2.jpg" alt="Foto 2"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+      <div class="c-ph" style="display:none">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+        <span>Foto 2</span>
+      </div>
+    </div>
+    <div class="c-slide" data-idx="2">
+      <img src="img/galeria3.jpg" alt="Foto 3"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+      <div class="c-ph" style="display:none">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+        <span>Foto 3</span>
+      </div>
+    </div>
+    <div class="c-slide" data-idx="3">
+      <img src="img/galeria4.jpg" alt="Foto 4"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+      <div class="c-ph" style="display:none">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+        <span>Foto 4</span>
+      </div>
+    </div>
+    <div class="c-slide" data-idx="4">
+      <img src="img/galeria5.jpg" alt="Foto 5"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+      <div class="c-ph" style="display:none">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+        <span>Foto 5</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="carousel-dots" id="carouselDots">
+    <div class="cdot active" onclick="goSlide(0)"></div>
+    <div class="cdot"        onclick="goSlide(1)"></div>
+    <div class="cdot"        onclick="goSlide(2)"></div>
+    <div class="cdot"        onclick="goSlide(3)"></div>
+    <div class="cdot"        onclick="goSlide(4)"></div>
+  </div>
+</div>
+
 <!-- ══ PROGRAMA DEL EVENTO ══ -->
 <div class="programa-section">
   <img src="img/t.png" alt="" class="prog-flower"/>
@@ -1079,6 +1225,42 @@
     m.currentTime = parseFloat(sessionStorage.getItem('musicTime') || '0');
     m.play().catch(()=>{ document.getElementById('musicBtn').style.display='block'; });
   })();
+  /* ── Carrusel galería ── */
+  var carCurrent = 0;
+  var carSlides  = document.querySelectorAll('.c-slide');
+  var carDots    = document.querySelectorAll('.cdot');
+  var carVP      = document.getElementById('carouselVP');
+  var carTimer;
+
+  function goSlide(idx) {
+    carSlides.forEach(function(s,i){ s.classList.toggle('active', i===idx); });
+    carDots.forEach(function(d,i){   d.classList.toggle('active',  i===idx); });
+    carCurrent = idx;
+    var slide = carSlides[idx];
+    var left  = slide.offsetLeft - (carVP.offsetWidth - slide.offsetWidth) / 2;
+    carVP.scrollTo({ left: left, behavior: 'smooth' });
+    resetTimer();
+  }
+
+  function resetTimer() {
+    clearInterval(carTimer);
+    carTimer = setInterval(function(){
+      goSlide((carCurrent + 1) % carSlides.length);
+    }, 4000);
+  }
+
+  /* swipe táctil */
+  var carTX = 0;
+  carVP.addEventListener('touchstart', function(e){ carTX = e.touches[0].clientX; }, {passive:true});
+  carVP.addEventListener('touchend',   function(e){
+    var dx = e.changedTouches[0].clientX - carTX;
+    if (Math.abs(dx) > 40) goSlide(dx < 0
+      ? Math.min(carCurrent+1, carSlides.length-1)
+      : Math.max(carCurrent-1, 0));
+  });
+
+  goSlide(0);
+
   function forcePlay(){
     document.getElementById('music').play();
     document.getElementById('musicBtn').style.display='none';
