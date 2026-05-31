@@ -349,29 +349,29 @@
       font-size:0.88rem; color:#aaa; font-style:italic;
     }
     .carousel-outer {
-      overflow:hidden;
-      position:relative;
-      padding:8px 0 12px;
+      overflow-x: hidden;
+      overflow-y: visible;      /* permite que la slide activa escale sin recortarse */
+      position: relative;
+      padding: 16px 0 14px;    /* espacio arriba para el scale */
     }
     .c-track {
-      display:flex;
-      gap:10px;
-      will-change:transform;
-      transition:transform 0.52s cubic-bezier(0.25,0.46,0.45,0.94);
+      display: flex;
+      gap: 12px;
+      will-change: transform;
+      transition: transform 0.52s cubic-bezier(0.25,0.46,0.45,0.94);
     }
     .c-slide {
-      flex:0 0 calc(100% - 160px);
-      scroll-snap-align:center;
-      border-radius:10px;
-      overflow:hidden;
-      position:relative;
-      transition:transform 0.35s, box-shadow 0.35s, border 0.35s;
-      border:2.5px solid transparent;
+      flex: 0 0 calc(100% - 120px);   /* más ancho, menos recortado */
+      border-radius: 12px;
+      overflow: hidden;
+      position: relative;
+      transition: transform 0.35s, box-shadow 0.35s, border 0.35s;
+      border: 2.5px solid transparent;
     }
     .c-slide.active {
-      transform:scale(1.06);
-      box-shadow:0 10px 32px rgba(74,88,40,0.22);
-      border-color:var(--olive-mid);
+      transform: scale(1.04);
+      box-shadow: 0 8px 28px rgba(74,88,40,0.20);
+      border-color: var(--olive-mid);
     }
     .c-slide img {
       width:100%; aspect-ratio:4/5;
