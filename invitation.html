@@ -215,8 +215,53 @@
       object-fit:contain;
       margin:0 auto 14px;
       display:block;
-      /* teñir el icono negro a verde olivo */
       filter: invert(38%) sepia(28%) saturate(600%) hue-rotate(58deg) brightness(0.75);
+    }
+
+    /* ── Animación brindis ── */
+    .brindis-wrap {
+      position: relative;
+      width: 90px;
+      height: 90px;
+      margin: 0 auto 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .brindis-icon {
+      width: 72px; height: 72px;
+      object-fit: contain;
+      filter: invert(38%) sepia(28%) saturate(600%) hue-rotate(58deg) brightness(0.75);
+      animation: clink 2.4s ease-in-out infinite;
+      transform-origin: bottom center;
+      position: relative;
+      z-index: 2;
+    }
+
+    @keyframes clink {
+      0%          { transform: rotate(0deg)   scale(1);    filter: invert(38%) sepia(28%) saturate(600%) hue-rotate(58deg) brightness(0.75); }
+      18%         { transform: rotate(-12deg) scale(1.08); }
+      36%         { transform: rotate(12deg)  scale(1.08); }
+      44%         { transform: rotate(0deg)   scale(1.12); filter: invert(38%) sepia(28%) saturate(600%) hue-rotate(58deg) brightness(1.2); }
+      52%         { transform: rotate(0deg)   scale(1);    filter: invert(38%) sepia(28%) saturate(600%) hue-rotate(58deg) brightness(0.75); }
+      100%        { transform: rotate(0deg)   scale(1); }
+    }
+
+    /* Burbujas */
+    .bubble {
+      position: absolute;
+      border-radius: 50%;
+      background: var(--olive-mid);
+      opacity: 0;
+      animation: bubbleUp 2.4s ease-in infinite;
+      z-index: 1;
+    }
+    @keyframes bubbleUp {
+      0%   { transform: translateY(0)    scale(1);    opacity: 0; }
+      15%  { opacity: 0.7; }
+      80%  { opacity: 0.4; }
+      100% { transform: translateY(-55px) scale(0.3); opacity: 0; }
     }
 
     .location-title {
@@ -550,7 +595,9 @@
 
   <!-- Recepción -->
   <div class="location-block">
-    <img src="img/recepcion.png" alt="Recepción" class="location-icon"/>
+    <div class="brindis-wrap" id="brindisWrap">
+      <img src="img/recepcion.png" alt="Recepción" class="brindis-icon"/>
+    </div>
     <div class="location-title">Recepción</div>
     <div class="location-time">13:00</div>
     <div class="location-address">
@@ -594,6 +641,29 @@
     document.getElementById('music').play();
     document.getElementById('musicBtn').style.display='none';
   }
+
+  /* ── Burbujas del brindis ── */
+  (function(){
+    const wrap = document.getElementById('brindisWrap');
+    const positions = [
+      { left:'30%', size:5, delay:'0s'    },
+      { left:'45%', size:4, delay:'0.4s'  },
+      { left:'55%', size:6, delay:'0.8s'  },
+      { left:'62%', size:3, delay:'0.2s'  },
+      { left:'38%', size:4, delay:'1.1s'  },
+      { left:'50%', size:5, delay:'1.5s'  },
+    ];
+    positions.forEach(function(b){
+      const el = document.createElement('div');
+      el.className = 'bubble';
+      el.style.cssText = `
+        width:${b.size}px; height:${b.size}px;
+        left:${b.left}; bottom:30%;
+        animation-delay:${b.delay};
+      `;
+      wrap.appendChild(el);
+    });
+  })();
 </script>
 </body>
 </html>
