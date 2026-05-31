@@ -348,15 +348,17 @@
       font-family:'Cormorant Garamond',serif;
       font-size:0.88rem; color:#aaa; font-style:italic;
     }
-    .carousel-vp {
-      display:flex; gap:10px;
-      overflow-x:auto;
-      scroll-snap-type:x mandatory;
-      -webkit-overflow-scrolling:touch;
-      padding:8px 80px 12px;
-      scrollbar-width:none;
+    .carousel-outer {
+      overflow:hidden;
+      position:relative;
+      padding:8px 0 12px;
     }
-    .carousel-vp::-webkit-scrollbar { display:none; }
+    .c-track {
+      display:flex;
+      gap:10px;
+      will-change:transform;
+      transition:transform 0.52s cubic-bezier(0.25,0.46,0.45,0.94);
+    }
     .c-slide {
       flex:0 0 calc(100% - 160px);
       scroll-snap-align:center;
@@ -981,7 +983,7 @@
     <div class="gallery-sub">Un instante que queda en la eternidad</div>
   </div>
 
-  <div class="carousel-vp" id="carouselVP">
+  <div class="carousel-outer" id="carouselOuter"><div class="c-track" id="cTrack">
     <div class="c-slide" data-idx="0">
       <img src="img/galeria1.jpg" alt="Foto 1"
            onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
@@ -1022,14 +1024,14 @@
         <span>Foto 5</span>
       </div>
     </div>
-  </div>
+  </div></div>
 
   <div class="carousel-dots" id="carouselDots">
-    <div class="cdot active" onclick="goSlide(0)"></div>
-    <div class="cdot"        onclick="goSlide(1)"></div>
-    <div class="cdot"        onclick="goSlide(2)"></div>
-    <div class="cdot"        onclick="goSlide(3)"></div>
-    <div class="cdot"        onclick="goSlide(4)"></div>
+    <div class="cdot"></div>
+    <div class="cdot"></div>
+    <div class="cdot"></div>
+    <div class="cdot"></div>
+    <div class="cdot"></div>
   </div>
 </div>
 
@@ -1225,41 +1227,82 @@
     m.currentTime = parseFloat(sessionStorage.getItem('musicTime') || '0');
     m.play().catch(()=>{ document.getElementById('musicBtn').style.display='block'; });
   })();
-  /* ── Carrusel galería ── */
-  var carCurrent = 0;
-  var carSlides  = document.querySelectorAll('.c-slide');
-  var carDots    = document.querySelectorAll('.cdot');
-  var carVP      = document.getElementById('carouselVP');
-  var carTimer;
+  /* ── Carrusel infinito ── */
+  (function(){
+    var outer  = document.getElementById('carouselOuter');
+    var track  = document.getElementById('cTrack');
+    var dots   = Array.from(document.querySelectorAll('.cdot'));
+    if (!outer || !track) return;
 
-  function goSlide(idx) {
-    carSlides.forEach(function(s,i){ s.classList.toggle('active', i===idx); });
-    carDots.forEach(function(d,i){   d.classList.toggle('active',  i===idx); });
-    carCurrent = idx;
-    var slide = carSlides[idx];
-    var left  = slide.offsetLeft - (carVP.offsetWidth - slide.offsetWidth) / 2;
-    carVP.scrollTo({ left: left, behavior: 'smooth' });
-    resetTimer();
-  }
+    /* Clonar todos los slides al final para loop infinito */
+    var origSlides = Array.from(track.children);
+    var N = origSlides.length;
+    origSlides.forEach(function(s){ track.appendChild(s.cloneNode(true)); });
+    var allSlides = Array.from(track.children); /* 2*N slides */
 
-  function resetTimer() {
-    clearInterval(carTimer);
-    carTimer = setInterval(function(){
-      goSlide((carCurrent + 1) % carSlides.length);
-    }, 4000);
-  }
+    var cur = 0;
+    var timer;
 
-  /* swipe táctil */
-  var carTX = 0;
-  carVP.addEventListener('touchstart', function(e){ carTX = e.touches[0].clientX; }, {passive:true});
-  carVP.addEventListener('touchend',   function(e){
-    var dx = e.changedTouches[0].clientX - carTX;
-    if (Math.abs(dx) > 40) goSlide(dx < 0
-      ? Math.min(carCurrent+1, carSlides.length-1)
-      : Math.max(carCurrent-1, 0));
-  });
+    function center(idx) {
+      var s = allSlides[idx];
+      return s.offsetLeft + s.offsetWidth / 2;
+    }
 
-  goSlide(0);
+    function moveTo(idx, anim) {
+      track.style.transition = anim
+        ? 'transform 0.52s cubic-bezier(0.25,0.46,0.45,0.94)'
+        : 'none';
+      var offset = center(idx) - outer.offsetWidth / 2;
+      track.style.transform = 'translateX(' + (-offset) + 'px)';
+      cur = idx;
+
+      /* Activo visual */
+      allSlides.forEach(function(s,i){ s.classList.toggle('active', i===idx); });
+      var dotIdx = idx % N;
+      dots.forEach(function(d,i){ d.classList.toggle('active', i===dotIdx); });
+    }
+
+    /* Salto silencioso al terminar la transición hacia el clon */
+    track.addEventListener('transitionend', function(){
+      if (cur >= N) moveTo(cur - N, false);
+    });
+
+    function next(){ moveTo(cur + 1, true); }
+    function prev(){ moveTo(cur > 0 ? cur - 1 : N - 1, true); }
+
+    function startTimer(){
+      clearInterval(timer);
+      timer = setInterval(next, 3500);
+    }
+
+    /* Dots */
+    dots.forEach(function(d, i){
+      d.addEventListener('click', function(){
+        moveTo(i, true);
+        startTimer();
+      });
+    });
+
+    /* Swipe táctil */
+    var tx = 0;
+    outer.addEventListener('touchstart', function(e){ tx = e.touches[0].clientX; }, {passive:true});
+    outer.addEventListener('touchend', function(e){
+      var dx = e.changedTouches[0].clientX - tx;
+      if (Math.abs(dx) > 35){ dx < 0 ? next() : prev(); startTimer(); }
+    });
+
+    /* Arrastre con mouse (desktop) */
+    var mx = 0, dragging = false;
+    outer.addEventListener('mousedown', function(e){ mx = e.clientX; dragging = true; });
+    outer.addEventListener('mouseup',   function(e){
+      if (!dragging) return; dragging = false;
+      var dx = e.clientX - mx;
+      if (Math.abs(dx) > 35){ dx < 0 ? next() : prev(); startTimer(); }
+    });
+
+    moveTo(0, false);
+    startTimer();
+  })();
 
   function forcePlay(){
     document.getElementById('music').play();
