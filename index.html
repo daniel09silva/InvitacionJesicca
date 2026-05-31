@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Invitación Jessica & Humberto</title>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      height: 100vh;
+      overflow: hidden;
+      background: radial-gradient(ellipse at center, #1c0e35 0%, #0d0018 65%, #000 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 24px;
+    }
+
+    /* Partículas */
+    .particles { position: fixed; inset: 0; pointer-events: none; z-index: 0; }
+    .particle  { position: absolute; border-radius: 50%; animation: floatUp linear infinite; opacity: 0; }
+    @keyframes floatUp {
+      0%   { transform: translateY(100vh) scale(0); opacity: 0; }
+      10%  { opacity: 1; }
+      90%  { opacity: 1; }
+      100% { transform: translateY(-10vh) scale(1); opacity: 0; }
+    }
+
+    /* Sobre */
+    @keyframes envGlow {
+      0%, 100% { filter: drop-shadow(0 4px 16px rgba(210,175,60,0.4)); }
+      50%       { filter: drop-shadow(0 4px 40px rgba(210,175,60,1)); }
+    }
+
+    .envelope {
+      position: relative;
+      z-index: 10;
+      width: min(88vw, 420px);
+      cursor: pointer;
+      animation: envGlow 2.6s ease-in-out infinite;
+      transition: transform 0.15s ease;
+    }
+    .envelope:active { transform: scale(0.97); }
+
+    .envelope img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 6px;
+    }
+
+    /* Hint */
+    .hint {
+      position: relative;
+      z-index: 10;
+      text-align: center;
+      animation: pulse 2.2s ease-in-out infinite;
+      transition: opacity 0.3s;
+    }
+    .hint.hidden { opacity: 0; }
+    .hint p { color: #f5d98b; font-size: 0.76rem; letter-spacing: 3px; text-transform: uppercase; }
+    .hint span { font-size: 1.4rem; display: block; margin-bottom: 5px; }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1);    opacity: 0.85; }
+      50%       { transform: scale(1.12); opacity: 1;    }
+    }
+  </style>
+</head>
+<body>
+
+<div class="particles" id="particles"></div>
+
+<audio id="music" loop preload="auto">
+  <source src="Que Suerte Tenerte.mp3" type="audio/mpeg">
+</audio>
+
+<div class="envelope" onclick="abrir()">
+  <img src="img/sobre_cerrado.png" alt="Invitación Jessica &amp; Humberto"/>
+</div>
+
+<div class="hint" id="hint">
+  <p>Toca para abrir</p>
+</div>
+
+<script>
+  /* Partículas doradas */
+  (function () {
+    const c = document.getElementById('particles');
+    const cols = ['#f5d98b','#d4af37','#fff8dc','#ffe066','#ffd700'];
+    for (let i = 0; i < 52; i++) {
+      const p = document.createElement('div');
+      p.className = 'particle';
+      const s = Math.random() * 4 + 1;
+      p.style.cssText = `
+        width:${s}px;height:${s}px;
+        left:${Math.random()*100}%;
+        background:${cols[Math.floor(Math.random()*cols.length)]};
+        animation-duration:${Math.random()*12+8}s;
+        animation-delay:${Math.random()*10}s;
+        box-shadow:0 0 ${s*2}px currentColor;
+      `;
+      c.appendChild(p);
+    }
+  })();
+
+  let abriendo = false;
+  function abrir() {
+    if (abriendo) return;
+    abriendo = true;
+
+    document.getElementById('hint').classList.add('hidden');
+
+    /* Reproducir música */
+    const music = document.getElementById('music');
+    music.play().catch(() => {});
+
+    /* Guardar estado para que invitation.html continúe la música */
+    setTimeout(() => {
+      sessionStorage.setItem('musicTime', music.currentTime);
+      sessionStorage.setItem('musicPlay', '1');
+      window.location.href = 'invitation.html';
+    }, 300);
+  }
+</script>
+</body>
+</html>
