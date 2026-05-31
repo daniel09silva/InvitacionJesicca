@@ -315,6 +315,123 @@
     .loc-sep-line { flex:1; height:1px; background:var(--olive-light); }
     .loc-sep-dot  { width:6px; height:6px; border-radius:50%; background:var(--olive-mid); }
 
+    /* ══ PROGRAMA DEL EVENTO ══ */
+    .programa-section {
+      max-width:480px; margin:0 auto;
+      background:#fff;
+      padding:36px 28px 32px;
+      border-top:1px solid var(--olive-light);
+    }
+    .section-title {
+      font-family:'Dancing Script',cursive;
+      font-size:clamp(1.7rem,6vw,2.1rem);
+      color:var(--olive-dark);
+      text-align:center;
+      margin-bottom:24px;
+    }
+    .section-title-deco {
+      display:flex; align-items:center; justify-content:center; gap:10px; margin-bottom:6px;
+    }
+    .prog-flower {
+      width:50px; opacity:0.75;
+      display:block; margin:0 auto 16px;
+    }
+    .prog-item {
+      display:flex; align-items:baseline; gap:14px;
+      padding:11px 0;
+      border-bottom:1px solid var(--olive-light);
+    }
+    .prog-item:last-child { border-bottom:none; }
+    .prog-time {
+      font-family:'Montserrat',sans-serif;
+      font-weight:600; font-size:0.85rem;
+      color:var(--olive-dark);
+      min-width:42px; letter-spacing:0.5px;
+      flex-shrink:0;
+    }
+    .prog-bar {
+      width:3px; height:18px;
+      background:var(--olive-mid);
+      border-radius:2px; flex-shrink:0;
+      align-self:center;
+    }
+    .prog-desc {
+      font-family:'Dancing Script',cursive;
+      font-size:1.05rem; color:var(--text);
+      line-height:1.3; flex:1;
+    }
+
+    /* ══ VESTIMENTA ══ */
+    .vestimenta-section {
+      max-width:480px; margin:0 auto;
+      background:var(--cream);
+      padding:32px 28px;
+      text-align:center;
+      border-top:1px solid var(--olive-light);
+    }
+    .vest-icon { width:90px; margin:0 auto 10px; display:block; }
+    .vest-label {
+      font-family:'Montserrat',sans-serif;
+      font-size:0.78rem; letter-spacing:3px;
+      color:var(--olive-dark); text-transform:uppercase;
+      margin-bottom:6px; font-weight:600;
+    }
+    .vest-note {
+      font-family:'Cormorant Garamond',serif;
+      font-size:0.9rem; color:#888; letter-spacing:1px;
+    }
+    .vest-colors {
+      display:flex; justify-content:center; gap:10px; margin-top:12px;
+    }
+    .vest-color-chip {
+      display:flex; flex-direction:column; align-items:center; gap:4px;
+      font-family:'Montserrat',sans-serif; font-size:0.58rem;
+      color:#999; letter-spacing:1px; text-transform:uppercase;
+    }
+    .vest-color-circle {
+      width:28px; height:28px; border-radius:50%;
+      border:1.5px solid #ddd;
+    }
+
+    /* ══ REGALOS ══ */
+    .regalos-section {
+      max-width:480px; margin:0 auto;
+      background:#fff;
+      padding:36px 32px;
+      text-align:center;
+      border-top:1px solid var(--olive-light);
+    }
+    .regalos-text {
+      font-family:'Cormorant Garamond',serif;
+      font-size:1.05rem; color:var(--text);
+      line-height:1.85; letter-spacing:0.2px;
+    }
+
+    /* ══ RSVP ══ */
+    .rsvp-section {
+      max-width:480px; margin:0 auto;
+      background:var(--cream);
+      padding:36px 28px 44px;
+      text-align:center;
+      border-top:1px solid var(--olive-light);
+    }
+    .rsvp-icon { width:80px; margin:0 auto 18px; display:block; }
+    .rsvp-btn {
+      display:inline-block;
+      background:var(--olive-dark);
+      color:#fff;
+      font-family:'Montserrat',sans-serif;
+      font-size:0.78rem; font-weight:600;
+      letter-spacing:3px; text-transform:uppercase;
+      text-decoration:none;
+      padding:14px 30px;
+      border-radius:3px;
+      box-shadow:0 4px 16px rgba(74,88,40,0.3);
+      transition:background 0.2s, transform 0.15s;
+    }
+    .rsvp-btn:active { transform:scale(0.97); }
+    .rsvp-btn:hover  { background:var(--olive); }
+
     /* Pie final */
     .page-footer {
       max-width:480px; margin:0 auto;
@@ -645,6 +762,135 @@
     </a>
   </div>
 
+</div>
+
+<!-- ══ PROGRAMA DEL EVENTO ══ -->
+<div class="programa-section">
+  <img src="img/t.png" alt="" class="prog-flower"/>
+  <div class="section-title">Programa del Evento</div>
+
+  <div class="prog-item">
+    <span class="prog-time">10:00</span>
+    <div class="prog-bar"></div>
+    <span class="prog-desc">Ceremonia religiosa en la Parroquia Espíritu Santo Hualhuas</span>
+  </div>
+  <div class="prog-item">
+    <span class="prog-time">12:00</span>
+    <div class="prog-bar"></div>
+    <span class="prog-desc">Recibimiento de los Novios — Parque Central Hualhuas</span>
+  </div>
+  <div class="prog-item">
+    <span class="prog-time">13:00</span>
+    <div class="prog-bar" style="background:#9b59b6"></div>
+    <span class="prog-desc">Recepción y Champaña</span>
+  </div>
+  <div class="prog-item">
+    <span class="prog-time">13:30</span>
+    <div class="prog-bar"></div>
+    <span class="prog-desc">Almuerzo</span>
+  </div>
+  <div class="prog-item">
+    <span class="prog-time">15:00</span>
+    <div class="prog-bar"></div>
+    <span class="prog-desc">Fiesta y baile</span>
+  </div>
+  <div class="prog-item">
+    <span class="prog-time">16:00</span>
+    <div class="prog-bar"></div>
+    <span class="prog-desc">Tradición — Palpa</span>
+  </div>
+  <div class="prog-item">
+    <span class="prog-time">03:00</span>
+    <div class="prog-bar"></div>
+    <span class="prog-desc">Fin del evento</span>
+  </div>
+</div>
+
+<!-- ══ VESTIMENTA ══ -->
+<div class="vestimenta-section">
+  <!-- Icono vestimenta SVG -->
+  <svg class="vest-icon" viewBox="0 0 100 90" xmlns="http://www.w3.org/2000/svg">
+    <!-- Vestido (izquierda) -->
+    <g fill="none" stroke="#4a5828" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <!-- cuerpo vestido -->
+      <path d="M 28,12 Q 22,8 18,14 L 10,28 L 22,28 L 18,72 L 38,72 L 34,28 L 46,28 L 42,14 Q 38,8 32,12"/>
+      <!-- escote -->
+      <path d="M 28,12 Q 30,20 32,12"/>
+      <!-- faldón curvo -->
+      <path d="M 18,72 Q 28,82 38,72"/>
+    </g>
+    <!-- Traje (derecha) -->
+    <g fill="none" stroke="#4a5828" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <!-- cuerpo traje -->
+      <rect x="58" y="28" width="26" height="44" rx="2"/>
+      <!-- cabeza -->
+      <circle cx="71" cy="16" r="8"/>
+      <!-- solapas -->
+      <path d="M 71,28 L 64,38 M 71,28 L 78,38"/>
+      <!-- corbata/moño -->
+      <path d="M 68,38 L 71,44 L 74,38 L 71,40 Z" fill="#4a5828"/>
+      <!-- botones -->
+      <circle cx="71" cy="50" r="1.5" fill="#4a5828"/>
+      <circle cx="71" cy="58" r="1.5" fill="#4a5828"/>
+      <!-- pantalón -->
+      <line x1="67" y1="72" x2="65" y2="88"/>
+      <line x1="75" y1="72" x2="77" y2="88"/>
+    </g>
+  </svg>
+
+  <div class="vest-label">Código de Vestimenta</div>
+  <div class="vest-label" style="font-size:1rem;letter-spacing:1px;color:var(--olive);margin-bottom:10px">Formal</div>
+  <div class="vest-note">Evitar colores:</div>
+  <div class="vest-colors">
+    <div class="vest-color-chip">
+      <div class="vest-color-circle" style="background:#fff"></div>
+      <span>Blanco</span>
+    </div>
+    <div class="vest-color-chip">
+      <div class="vest-color-circle" style="background:#f5f0e8"></div>
+      <span>Crema</span>
+    </div>
+    <div class="vest-color-chip">
+      <div class="vest-color-circle" style="background:#000"></div>
+      <span>Negro</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SUGERENCIA DE REGALOS ══ -->
+<div class="regalos-section">
+  <div class="section-title">Sugerencia de Regalos</div>
+  <div class="divider" style="margin-bottom:22px"></div>
+  <p class="regalos-text">
+    Si deseas hacernos un regalo, agradeceríamos mucho cualquier contribución,
+    ya sea en forma de dinero o un detalle de nuestra mesa de regalos,
+    sin embargo lo que más valoramos es tu presencia y apoyo en este día tan especial.
+  </p>
+</div>
+
+<!-- ══ CONFIRMAR ASISTENCIA ══ -->
+<div class="rsvp-section">
+  <div class="section-title">Confirmar Asistencia</div>
+
+  <!-- Icono lista SVG -->
+  <svg class="rsvp-icon" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+    <rect x="10" y="8" width="52" height="64" rx="4" fill="none" stroke="#4a5828" stroke-width="2.5"/>
+    <rect x="18" y="18" width="36" height="4" rx="2" fill="#8a9a50" opacity="0.6"/>
+    <rect x="18" y="28" width="28" height="4" rx="2" fill="#8a9a50" opacity="0.6"/>
+    <rect x="18" y="38" width="32" height="4" rx="2" fill="#8a9a50" opacity="0.6"/>
+    <!-- Check grande -->
+    <circle cx="52" cy="56" r="16" fill="var(--olive-dark)"/>
+    <polyline points="44,56 50,62 62,50" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+
+  <p style="font-family:'Cormorant Garamond',serif;font-size:1rem;color:#888;margin-bottom:22px;line-height:1.6">
+    Acompáñanos cuando demos el "sí, acepto".<br/>
+    Por favor confirma tu asistencia.
+  </p>
+
+  <a href="#" class="rsvp-btn" id="rsvpBtn" target="_blank">
+    ✓ &nbsp; Confirmar Asistencia
+  </a>
 </div>
 
 <!-- Pie final -->
