@@ -77,7 +77,118 @@
 </audio>
 
 <div class="envelope" onclick="abrir()">
-  <img src="img/sobre_cerrado.png" alt="Invitación Jessica &amp; Humberto"/>
+<svg viewBox="0 0 340 240" xmlns="http://www.w3.org/2000/svg"
+     style="width:100%;height:auto;display:block;border-radius:7px;">
+  <defs>
+    <!-- Textura papel -->
+    <filter id="paper" x="0%" y="0%" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.72" numOctaves="4" result="n"/>
+      <feColorMatrix type="saturate" values="0" in="n" result="g"/>
+      <feBlend in="SourceGraphic" in2="g" mode="multiply"/>
+    </filter>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%"   stop-color="#566830"/>
+      <stop offset="45%"  stop-color="#4a5828"/>
+      <stop offset="100%" stop-color="#384218"/>
+    </linearGradient>
+    <linearGradient id="flapG" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"   stop-color="#607535"/>
+      <stop offset="100%" stop-color="#3a4a1c"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Cuerpo principal -->
+  <rect width="340" height="240" rx="6" fill="url(#bg)"/>
+  <!-- Textura -->
+  <rect width="340" height="240" rx="6" fill="#4a5828" filter="url(#paper)" opacity="0.38"/>
+
+  <!-- Flap superior -->
+  <polygon points="0,0 340,0 170,118" fill="url(#flapG)" opacity="0.7"/>
+  <!-- Sombras laterales -->
+  <polygon points="0,0 0,240 138,121"   fill="#000" opacity="0.10"/>
+  <polygon points="340,0 340,240 202,121" fill="#000" opacity="0.10"/>
+  <!-- Fondo inferior -->
+  <polygon points="0,240 170,126 340,240" fill="#354018" opacity="0.55"/>
+
+  <!-- Líneas de pliegue -->
+  <line x1="0"   y1="0"   x2="170" y2="118" stroke="rgba(0,0,0,0.18)" stroke-width="1"/>
+  <line x1="340" y1="0"   x2="170" y2="118" stroke="rgba(0,0,0,0.18)" stroke-width="1"/>
+  <line x1="0"   y1="240" x2="170" y2="126" stroke="rgba(0,0,0,0.14)" stroke-width="1"/>
+  <line x1="340" y1="240" x2="170" y2="126" stroke="rgba(0,0,0,0.14)" stroke-width="1"/>
+
+  <!-- ═══ SELLO FLORAL CORAZÓN (centrado en 170,100) ═══ -->
+  <g transform="translate(170,100)">
+
+    <!-- Corazón outline -->
+    <path d="M 0,40 C -2,36 -52,15 -52,-7
+             C -52,-30 -34,-38 -17,-27
+             C -9,-22 0,-13 0,-13
+             C 0,-13 9,-22 17,-27
+             C 34,-38 52,-30 52,-7
+             C 52,15 2,36 0,40 Z"
+          fill="none" stroke="rgba(255,255,255,0.82)" stroke-width="1.8" stroke-linejoin="round"/>
+
+    <!-- Flor izquierda (bump izq) -->
+    <g transform="translate(-24,-25)">
+      <ellipse cx="0" cy="-5.5" rx="3.5" ry="5.5" fill="rgba(255,255,255,0.68)" transform="rotate(0)"/>
+      <ellipse cx="0" cy="-5.5" rx="3.5" ry="5.5" fill="rgba(255,255,255,0.68)" transform="rotate(72)"/>
+      <ellipse cx="0" cy="-5.5" rx="3.5" ry="5.5" fill="rgba(255,255,255,0.68)" transform="rotate(144)"/>
+      <ellipse cx="0" cy="-5.5" rx="3.5" ry="5.5" fill="rgba(255,255,255,0.68)" transform="rotate(216)"/>
+      <ellipse cx="0" cy="-5.5" rx="3.5" ry="5.5" fill="rgba(255,255,255,0.68)" transform="rotate(288)"/>
+      <circle cx="0" cy="0" r="4" fill="rgba(255,255,255,0.9)"/>
+    </g>
+
+    <!-- Flor derecha (bump der) -->
+    <g transform="translate(24,-25)">
+      <ellipse cx="0" cy="-5.5" rx="3.5" ry="5.5" fill="rgba(255,255,255,0.68)" transform="rotate(0)"/>
+      <ellipse cx="0" cy="-5.5" rx="3.5" ry="5.5" fill="rgba(255,255,255,0.68)" transform="rotate(72)"/>
+      <ellipse cx="0" cy="-5.5" rx="3.5" ry="5.5" fill="rgba(255,255,255,0.68)" transform="rotate(144)"/>
+      <ellipse cx="0" cy="-5.5" rx="3.5" ry="5.5" fill="rgba(255,255,255,0.68)" transform="rotate(216)"/>
+      <ellipse cx="0" cy="-5.5" rx="3.5" ry="5.5" fill="rgba(255,255,255,0.68)" transform="rotate(288)"/>
+      <circle cx="0" cy="0" r="4" fill="rgba(255,255,255,0.9)"/>
+    </g>
+
+    <!-- Hojas laterales izquierda -->
+    <ellipse cx="-42" cy="-4" rx="10" ry="3.5" fill="rgba(255,255,255,0.45)" transform="rotate(-50,-42,-4)"/>
+    <ellipse cx="-40" cy="12" rx="9"  ry="3"   fill="rgba(255,255,255,0.40)" transform="rotate(-25,-40,12)"/>
+    <ellipse cx="-30" cy="25" rx="8"  ry="3"   fill="rgba(255,255,255,0.38)" transform="rotate(-10,-30,25)"/>
+
+    <!-- Hojas laterales derecha -->
+    <ellipse cx="42" cy="-4" rx="10" ry="3.5" fill="rgba(255,255,255,0.45)" transform="rotate(50,42,-4)"/>
+    <ellipse cx="40" cy="12" rx="9"  ry="3"   fill="rgba(255,255,255,0.40)" transform="rotate(25,40,12)"/>
+    <ellipse cx="30" cy="25" rx="8"  ry="3"   fill="rgba(255,255,255,0.38)" transform="rotate(10,30,25)"/>
+
+    <!-- Rosa central -->
+    <g transform="translate(0,12)">
+      <ellipse cx="0" cy="-8" rx="4.5" ry="7" fill="rgba(255,255,255,0.62)" transform="rotate(0)"/>
+      <ellipse cx="0" cy="-8" rx="4.5" ry="7" fill="rgba(255,255,255,0.62)" transform="rotate(72)"/>
+      <ellipse cx="0" cy="-8" rx="4.5" ry="7" fill="rgba(255,255,255,0.62)" transform="rotate(144)"/>
+      <ellipse cx="0" cy="-8" rx="4.5" ry="7" fill="rgba(255,255,255,0.62)" transform="rotate(216)"/>
+      <ellipse cx="0" cy="-8" rx="4.5" ry="7" fill="rgba(255,255,255,0.62)" transform="rotate(288)"/>
+      <circle cx="0" cy="0" r="5" fill="rgba(255,255,255,0.88)"/>
+    </g>
+
+    <!-- Tallo inferior -->
+    <line x1="0" y1="40" x2="0" y2="50" stroke="rgba(255,255,255,0.55)" stroke-width="1.5" stroke-linecap="round"/>
+    <ellipse cx="-7" cy="48" rx="7" ry="2.5" fill="rgba(255,255,255,0.38)" transform="rotate(-35,-7,48)"/>
+    <ellipse cx=" 7" cy="48" rx="7" ry="2.5" fill="rgba(255,255,255,0.38)" transform="rotate(35,7,48)"/>
+
+    <!-- Puntitos decorativos -->
+    <circle cx="-44" cy="3"  r="1.8" fill="rgba(255,255,255,0.55)"/>
+    <circle cx="-34" cy="20" r="1.5" fill="rgba(255,255,255,0.50)"/>
+    <circle cx=" 44" cy="3"  r="1.8" fill="rgba(255,255,255,0.55)"/>
+    <circle cx=" 34" cy="20" r="1.5" fill="rgba(255,255,255,0.50)"/>
+    <circle cx="  0" cy="38" r="1.5" fill="rgba(255,255,255,0.50)"/>
+  </g>
+
+  <!-- Nombre -->
+  <text x="170" y="196"
+        text-anchor="middle"
+        font-family="Dancing Script, Georgia, serif"
+        font-size="23"
+        fill="rgba(255,255,255,0.88)"
+        letter-spacing="0.5">Jessica &amp; Humberto</text>
+</svg>
 </div>
 
 <div class="hint" id="hint">
