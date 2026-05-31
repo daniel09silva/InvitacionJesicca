@@ -195,7 +195,11 @@
 
     /* Pie tarjeta */
     .card-footer { margin-top:36px; font-family:'Montserrat',sans-serif; font-size:0.63rem; letter-spacing:2px; color:var(--olive-mid); text-transform:uppercase; }
-    .card-footer .heart { font-size:1rem; color:#c0392b; }
+    .card-footer .heart {
+      font-size:1.6rem; color:#c0392b;
+      display:block; margin-bottom:6px;
+      animation: heartbeat 1.6s ease-in-out infinite;
+    }
 
     /* ══ SECCIONES LUGAR ══ */
     .locations {
@@ -800,9 +804,9 @@
   </div>
 
   <div class="card-footer" style="margin-top:36px">
-    <div class="card-line" style="height:1px;background:linear-gradient(to right,transparent,#8a9a50,transparent);margin-bottom:14px"></div>
-    <span class="heart">♥</span><br/>
-    <span style="display:block;margin-top:7px">Jessica &amp; Humberto · 2026</span>
+    <div class="card-line" style="height:1px;background:linear-gradient(to right,transparent,#8a9a50,transparent);margin-bottom:16px"></div>
+    <span class="heart">♥</span>
+    <span style="display:block">Jessica &amp; Humberto · 2026</span>
   </div>
 </div>
 
