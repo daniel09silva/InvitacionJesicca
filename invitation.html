@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Invitación Jessica & Humberto</title>
+  <title>Invitación Humberto & Jessica</title>
   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet"/>
   <style>
     *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
@@ -94,6 +94,14 @@
       letter-spacing:4px;
       color:var(--olive);
       text-transform:uppercase;
+    }
+    .amp {
+      font-family:'Montserrat',sans-serif;
+      font-style:normal;
+      font-weight:300;
+      font-size:0.65em;
+      vertical-align:middle;
+      padding:0 2px;
     }
 
     /* ══ TARJETA ══ */
@@ -539,20 +547,51 @@
       margin-bottom:8px;
     }
     .banco-row {
-      display:flex; justify-content:space-between; align-items:baseline;
+      display:flex; justify-content:space-between; align-items:center;
       margin-bottom:4px;
+      gap:10px;
+      cursor:pointer;
+      padding:6px 8px;
+      margin-left:-8px; margin-right:-8px;
+      border-radius:6px;
+      transition:background 0.2s;
     }
+    .banco-row:hover, .banco-row:active { background:var(--olive-light); }
     .banco-label {
       font-family:'Montserrat',sans-serif;
       font-size:0.62rem; letter-spacing:1px;
       color:#999; text-transform:uppercase;
       min-width:40px;
     }
+    .banco-num-wrap {
+      display:flex; align-items:center; gap:8px;
+    }
     .banco-num {
       font-family:'Cormorant Garamond',serif;
       font-size:0.95rem; color:#1a1a1a; font-weight:600;
       text-align:right; word-break:break-all;
     }
+    .copy-icon {
+      width:16px; height:16px; flex-shrink:0;
+      color:var(--olive);
+    }
+    .copy-icon svg { width:100%; height:100%; display:block; }
+    .banco-row.copied .copy-icon { color:#2e8b3d; }
+
+    /* ── Toast copiar ── */
+    .copy-toast {
+      position:fixed; left:50%; bottom:28px;
+      transform:translate(-50%,16px);
+      background:var(--olive-dark); color:#fff;
+      font-family:'Montserrat',sans-serif;
+      font-size:0.78rem; letter-spacing:0.3px;
+      padding:11px 20px; border-radius:30px;
+      box-shadow:0 6px 24px rgba(0,0,0,0.2);
+      opacity:0; pointer-events:none;
+      transition:opacity 0.25s, transform 0.25s;
+      z-index:1000;
+    }
+    .copy-toast.show { opacity:1; transform:translate(-50%,0); }
     .banco-titular {
       font-family:'Cormorant Garamond',serif;
       font-size:0.88rem; color:var(--olive-dark);
@@ -709,6 +748,8 @@
   <source src="Que Suerte Tenerte.mp3" type="audio/mpeg">
 </audio>
 
+<div class="copy-toast" id="copyToast">¡Copiado al portapapeles!</div>
+
 <!-- ══ HERO ══ -->
 <div class="hero">
 
@@ -786,11 +827,11 @@
   <div class="hex-wrapper" style="margin-top:28px">
     <div class="hex-border"></div>
     <div class="hex-clip">
-      <img src="img/foto.jpg" alt="Jessica y Humberto"
+      <img src="img/foto.jpg" alt="Humberto y Jessica"
            onerror="this.style.display='none';document.getElementById('hexPH').style.display='flex'"/>
       <div class="hex-placeholder" id="hexPH" style="display:none">
         <span>💑</span>
-        <small>Jessica<br/>&amp;<br/>Humberto</small>
+        <small>Humberto<br/>&amp;<br/>Jessica</small>
       </div>
     </div>
     <!-- Flores alrededor del hex -->
@@ -834,7 +875,7 @@
     </svg>
   </div>
 
-  <div class="couple-name">Jessica &amp; Humberto</div>
+  <div class="couple-name">Humberto <span class="amp">&amp;</span> Jessica</div>
   <div class="hero-subtitle">¡Nuestra Boda!</div>
 </div>
 
@@ -938,7 +979,7 @@
   <div class="card-footer" style="margin-top:36px">
     <div class="card-line" style="height:1px;background:linear-gradient(to right,transparent,#8a9a50,transparent);margin-bottom:16px"></div>
     <span class="heart">♥</span>
-    <span style="display:block">Jessica &amp; Humberto · 2026</span>
+    <span style="display:block">Humberto &amp; Jessica · 2026</span>
   </div>
 </div>
 
@@ -1041,14 +1082,6 @@
         <span>Foto 1</span>
       </div>
     </div>
-    <div class="c-slide" data-idx="1">
-      <img src="img/galeria2.jpg" alt="Foto 2"
-           onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
-      <div class="c-ph" style="display:none">
-        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
-        <span>Foto 2</span>
-      </div>
-    </div>
     <div class="c-slide" data-idx="2">
       <img src="img/galeria3.jpg" alt="Foto 3"
            onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
@@ -1057,20 +1090,9 @@
         <span>Foto 3</span>
       </div>
     </div>
-    <div class="c-slide" data-idx="3">
-      <img src="img/galeria4.jpg" alt="Foto 4"
-           onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
-      <div class="c-ph" style="display:none">
-        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
-        <span>Foto 4</span>
-      </div>
-    </div>
-
   </div></div>
 
   <div class="carousel-dots" id="carouselDots">
-    <div class="cdot"></div>
-    <div class="cdot"></div>
     <div class="cdot"></div>
     <div class="cdot"></div>
   </div>
@@ -1185,30 +1207,26 @@
   <div class="section-title" style="margin-bottom:6px;">Datos Bancarios</div>
   <div class="divider" style="margin-bottom:22px;"></div>
 
-  <!-- Cuenta Humberto -->
-  <div class="banco-block">
-    <div class="banco-nombre">Humberto Lira</div>
-    <div class="banco-row">
-      <span class="banco-label">BCP</span>
-      <span class="banco-num">— — — — — — —</span>
-    </div>
-    <div class="banco-row">
-      <span class="banco-label">CCI</span>
-      <span class="banco-num">— — — — — — —</span>
-    </div>
-    <div class="banco-titular">Titular: Humberto Lira</div>
-  </div>
-
   <!-- Cuenta Jessica -->
   <div class="banco-block">
     <div class="banco-nombre">Jessica</div>
-    <div class="banco-row">
-      <span class="banco-label">BCP</span>
-      <span class="banco-num">— — — — — — —</span>
+    <div class="banco-row" onclick="copiarDato(this,'0011-0175-0200846640')">
+      <span class="banco-label">BBVA Soles</span>
+      <span class="banco-num-wrap">
+        <span class="banco-num">0011-0175-0200846640</span>
+        <span class="copy-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+        </span>
+      </span>
     </div>
-    <div class="banco-row">
+    <div class="banco-row" onclick="copiarDato(this,'01117500020084664077')">
       <span class="banco-label">CCI</span>
-      <span class="banco-num">— — — — — — —</span>
+      <span class="banco-num-wrap">
+        <span class="banco-num">01117500020084664077</span>
+        <span class="copy-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+        </span>
+      </span>
     </div>
     <div class="banco-titular">Titular: Jessica</div>
   </div>
@@ -1276,7 +1294,7 @@
   <div class="footer-line"></div>
   <span class="footer-heart">♥</span>
   <div class="footer-title">Con amor</div>
-  <div class="footer-title">Jessica &amp; Humberto</div>
+  <div class="footer-title">Humberto <span class="amp">&amp;</span> Jessica</div>
   <div class="footer-line"></div>
   <div class="footer-sub">10 · Octubre · 2026</div>
 </div>
@@ -1312,6 +1330,41 @@
       document.addEventListener('click',      unlock, { once:true });
     });
   })();
+
+  /* ── Copiar datos bancarios ── */
+  function copiarDato(el, valor) {
+    function feedback() {
+      el.classList.add('copied');
+      mostrarToast('¡Copiado al portapapeles!');
+      setTimeout(function(){ el.classList.remove('copied'); }, 1400);
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(valor).then(feedback).catch(function(){ copiarFallback(valor, feedback); });
+    } else {
+      copiarFallback(valor, feedback);
+    }
+  }
+  function copiarFallback(valor, cb) {
+    var t = document.createElement('textarea');
+    t.value = valor;
+    t.style.position = 'fixed';
+    t.style.opacity = '0';
+    document.body.appendChild(t);
+    t.select();
+    try { document.execCommand('copy'); } catch(e) {}
+    document.body.removeChild(t);
+    cb();
+  }
+  var toastTimer;
+  function mostrarToast(msg) {
+    var toast = document.getElementById('copyToast');
+    if (!toast) return;
+    toast.textContent = msg;
+    toast.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function(){ toast.classList.remove('show'); }, 1800);
+  }
+
   /* ── Carrusel infinito ── */
   (function(){
     var outer  = document.getElementById('carouselOuter');
@@ -1452,7 +1505,7 @@
     /* 3. Abrir WhatsApp con mensaje personalizado */
     var msg = encodeURIComponent(
       '💍 *¡Confirmación de Asistencia!* 💍\n'
-      + 'Hola Jessica & Humberto! 🥰\n\n'
+      + 'Hola Humberto & Jessica! 🥰\n\n'
       + 'Con mucha alegría confirmo mi asistencia\n'
       + 'a su boda el *10 de Octubre de 2026* 🌿✨\n\n'
       + '👤 *Nombre:*  ' + nombre + '\n'

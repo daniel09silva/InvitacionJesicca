@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Invitación Jessica & Humberto</title>
+  <title>Invitación Humberto & Jessica</title>
   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Cormorant+Garamond:ital,wght@0,400;1,400&family=Montserrat:wght@300;400&display=swap" rel="stylesheet"/>
   <style>
     *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
@@ -27,6 +27,20 @@
       pointer-events: none;
       z-index: 0;
     }
+
+    /* ── Ramas de plantas en las esquinas (img/plantas.png) ── */
+    .corner-plant {
+      position: fixed;
+      width: min(42vw, 190px);
+      height: auto;
+      pointer-events: none;
+      z-index: 1;
+      opacity: 0.92;
+    }
+    .corner-plant.tl { top: -8px;  left: -8px; }
+    .corner-plant.tr { top: -8px;  right: -8px; transform: scaleX(-1); }
+    .corner-plant.bl { bottom: -8px; left: -8px; transform: scaleY(-1); }
+    .corner-plant.br { bottom: -8px; right: -8px; transform: scale(-1,-1); }
 
     /* ── Contenido ── */
     .content {
@@ -58,6 +72,14 @@
       color: #4a5828;
       line-height: 1.1;
       text-shadow: 1px 2px 8px rgba(74,88,40,0.12);
+    }
+    .amp {
+      font-family: 'Montserrat', sans-serif;
+      font-style: normal;
+      font-weight: 300;
+      font-size: 0.65em;
+      vertical-align: middle;
+      padding: 0 2px;
     }
     .header-date {
       font-family: 'Montserrat', sans-serif;
@@ -115,6 +137,12 @@
   </style>
 </head>
 <body>
+
+<!-- Ramas de plantas en las 4 esquinas -->
+<img class="corner-plant tl" src="img/plantas.png" alt=""/>
+<img class="corner-plant tr" src="img/plantas.png" alt=""/>
+<img class="corner-plant bl" src="img/plantas.png" alt=""/>
+<img class="corner-plant br" src="img/plantas.png" alt=""/>
 
 <!-- Flores decorativas de fondo (igual que hero de invitation.html) -->
 <svg class="bg-flowers" viewBox="0 0 400 800" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
@@ -213,7 +241,7 @@
   <!-- Encabezado -->
   <div class="header">
     <div class="header-pre">Una invitación especial</div>
-    <div class="header-names">Humberto Y Jessica  </div>
+    <div class="header-names">Humberto <span class="amp">&amp;</span> Jessica</div>
     <div class="header-date">Boda · 10 de Octubre · 2026</div>
   </div>
 
@@ -338,7 +366,7 @@
             font-family="Dancing Script, Georgia, serif"
             font-size="24"
             fill="#4a5828"
-            letter-spacing="0.5">Humberto Y Jessica</text>
+            letter-spacing="0.5">Humberto <tspan font-family="Montserrat, sans-serif" font-size="15">&amp;</tspan> Jessica</text>
 
       <!-- Líneas decorativas de esquina -->
       <line x1="18" y1="18" x2="44" y2="18" stroke="#b8cc70" stroke-width="1" opacity="0.7"/>
