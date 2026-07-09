@@ -20,14 +20,6 @@
       position: relative;
     }
 
-    /* ── Flores de fondo ── */
-    .bg-flowers {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: 0;
-    }
-
     /* ── Ramas de plantas en las esquinas (img/plantas.png) ── */
     .corner-plant {
       position: fixed;
@@ -143,95 +135,6 @@
 <img class="corner-plant tr" src="img/plantas.png" alt=""/>
 <img class="corner-plant bl" src="img/plantas.png" alt=""/>
 <img class="corner-plant br" src="img/plantas.png" alt=""/>
-
-<!-- Flores decorativas de fondo (igual que hero de invitation.html) -->
-<svg class="bg-flowers" viewBox="0 0 400 800" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
-  <!-- Esquina superior izquierda -->
-  <g transform="translate(-10, -10)">
-    <path d="M50 180 Q70 140 90 110 Q105 85 118 60" stroke="#7a8a45" stroke-width="1.8" fill="none" stroke-linecap="round"/>
-    <g transform="translate(118,58)">
-      <ellipse cx="0" cy="-12" rx="6.5" ry="12" fill="#8a9a50" transform="rotate(0)" opacity="0.8"/>
-      <ellipse cx="0" cy="-12" rx="6.5" ry="12" fill="#6b7c3d" transform="rotate(45)" opacity="0.8"/>
-      <ellipse cx="0" cy="-12" rx="6.5" ry="12" fill="#8a9a50" transform="rotate(90)" opacity="0.8"/>
-      <ellipse cx="0" cy="-12" rx="6.5" ry="12" fill="#6b7c3d" transform="rotate(135)" opacity="0.8"/>
-      <ellipse cx="0" cy="-12" rx="6.5" ry="12" fill="#8a9a50" transform="rotate(180)" opacity="0.8"/>
-      <ellipse cx="0" cy="-12" rx="6.5" ry="12" fill="#6b7c3d" transform="rotate(225)" opacity="0.8"/>
-      <ellipse cx="0" cy="-12" rx="6.5" ry="12" fill="#8a9a50" transform="rotate(270)" opacity="0.8"/>
-      <ellipse cx="0" cy="-12" rx="6.5" ry="12" fill="#6b7c3d" transform="rotate(315)" opacity="0.8"/>
-      <circle cx="0" cy="0" r="7" fill="#c8d48a"/>
-    </g>
-    <g transform="translate(45,110)">
-      <ellipse cx="0" cy="-9" rx="5" ry="9" fill="#7a8a45" transform="rotate(0)" opacity="0.75"/>
-      <ellipse cx="0" cy="-9" rx="5" ry="9" fill="#9aaa60" transform="rotate(72)" opacity="0.75"/>
-      <ellipse cx="0" cy="-9" rx="5" ry="9" fill="#7a8a45" transform="rotate(144)" opacity="0.75"/>
-      <ellipse cx="0" cy="-9" rx="5" ry="9" fill="#9aaa60" transform="rotate(216)" opacity="0.75"/>
-      <ellipse cx="0" cy="-9" rx="5" ry="9" fill="#7a8a45" transform="rotate(288)" opacity="0.75"/>
-      <circle cx="0" cy="0" r="5.5" fill="#b8cc70"/>
-    </g>
-    <ellipse cx="85" cy="100" rx="11" ry="4.5" fill="#6b7c3d" transform="rotate(-30,85,100)" opacity="0.65"/>
-    <ellipse cx="100" cy="84" rx="9"  ry="4"   fill="#8a9a50" transform="rotate(20,100,84)"  opacity="0.65"/>
-    <g transform="translate(65,145)">
-      <circle cx="0" cy="-5" r="3" fill="#8a9a50" opacity="0.7"/>
-      <circle cx="5" cy="0"  r="3" fill="#6b7c3d" opacity="0.7"/>
-      <circle cx="0" cy="5"  r="3" fill="#8a9a50" opacity="0.7"/>
-      <circle cx="-5" cy="0" r="3" fill="#6b7c3d" opacity="0.7"/>
-      <circle cx="0" cy="0"  r="3.5" fill="#b8cc70" opacity="0.8"/>
-    </g>
-  </g>
-
-  <!-- Esquina superior derecha (espejo) -->
-  <g transform="translate(410, -10) scale(-1,1)">
-    <path d="M50 180 Q70 140 90 110 Q105 85 118 60" stroke="#7a8a45" stroke-width="1.8" fill="none" stroke-linecap="round"/>
-    <g transform="translate(118,58)">
-      <ellipse cx="0" cy="-12" rx="6.5" ry="12" fill="#6b7c3d" transform="rotate(0)" opacity="0.8"/>
-      <ellipse cx="0" cy="-12" rx="6.5" ry="12" fill="#8a9a50" transform="rotate(45)" opacity="0.8"/>
-      <ellipse cx="0" cy="-12" rx="6.5" ry="12" fill="#6b7c3d" transform="rotate(90)" opacity="0.8"/>
-      <ellipse cx="0" cy="-12" rx="6.5" ry="12" fill="#8a9a50" transform="rotate(135)" opacity="0.8"/>
-      <ellipse cx="0" cy="-12" rx="6.5" ry="12" fill="#6b7c3d" transform="rotate(180)" opacity="0.8"/>
-      <ellipse cx="0" cy="-12" rx="6.5" ry="12" fill="#8a9a50" transform="rotate(225)" opacity="0.8"/>
-      <ellipse cx="0" cy="-12" rx="6.5" ry="12" fill="#6b7c3d" transform="rotate(270)" opacity="0.8"/>
-      <ellipse cx="0" cy="-12" rx="6.5" ry="12" fill="#8a9a50" transform="rotate(315)" opacity="0.8"/>
-      <circle cx="0" cy="0" r="7" fill="#c8d48a"/>
-    </g>
-    <g transform="translate(45,110)">
-      <ellipse cx="0" cy="-9" rx="5" ry="9" fill="#9aaa60" transform="rotate(0)" opacity="0.75"/>
-      <ellipse cx="0" cy="-9" rx="5" ry="9" fill="#7a8a45" transform="rotate(72)" opacity="0.75"/>
-      <ellipse cx="0" cy="-9" rx="5" ry="9" fill="#9aaa60" transform="rotate(144)" opacity="0.75"/>
-      <ellipse cx="0" cy="-9" rx="5" ry="9" fill="#7a8a45" transform="rotate(216)" opacity="0.75"/>
-      <ellipse cx="0" cy="-9" rx="5" ry="9" fill="#9aaa60" transform="rotate(288)" opacity="0.75"/>
-      <circle cx="0" cy="0" r="5.5" fill="#b8cc70"/>
-    </g>
-    <ellipse cx="85" cy="100" rx="11" ry="4.5" fill="#6b7c3d" transform="rotate(-30,85,100)" opacity="0.65"/>
-    <ellipse cx="100" cy="84" rx="9"  ry="4"   fill="#8a9a50" transform="rotate(20,100,84)"  opacity="0.65"/>
-  </g>
-
-  <!-- Flores esquina inferior izquierda -->
-  <g transform="translate(-10, 810) scale(1,-1)">
-    <path d="M50 180 Q70 140 90 110 Q105 85 118 60" stroke="#7a8a45" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.7"/>
-    <g transform="translate(118,58)">
-      <ellipse cx="0" cy="-10" rx="5.5" ry="10" fill="#8a9a50" transform="rotate(0)" opacity="0.7"/>
-      <ellipse cx="0" cy="-10" rx="5.5" ry="10" fill="#6b7c3d" transform="rotate(72)" opacity="0.7"/>
-      <ellipse cx="0" cy="-10" rx="5.5" ry="10" fill="#8a9a50" transform="rotate(144)" opacity="0.7"/>
-      <ellipse cx="0" cy="-10" rx="5.5" ry="10" fill="#6b7c3d" transform="rotate(216)" opacity="0.7"/>
-      <ellipse cx="0" cy="-10" rx="5.5" ry="10" fill="#8a9a50" transform="rotate(288)" opacity="0.7"/>
-      <circle cx="0" cy="0" r="6" fill="#c8d48a" opacity="0.8"/>
-    </g>
-  </g>
-
-  <!-- Flores esquina inferior derecha -->
-  <g transform="translate(410, 810) scale(-1,-1)">
-    <path d="M50 180 Q70 140 90 110 Q105 85 118 60" stroke="#7a8a45" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.7"/>
-    <g transform="translate(118,58)">
-      <ellipse cx="0" cy="-10" rx="5.5" ry="10" fill="#6b7c3d" transform="rotate(0)" opacity="0.7"/>
-      <ellipse cx="0" cy="-10" rx="5.5" ry="10" fill="#8a9a50" transform="rotate(72)" opacity="0.7"/>
-      <ellipse cx="0" cy="-10" rx="5.5" ry="10" fill="#6b7c3d" transform="rotate(144)" opacity="0.7"/>
-      <ellipse cx="0" cy="-10" rx="5.5" ry="10" fill="#8a9a50" transform="rotate(216)" opacity="0.7"/>
-      <ellipse cx="0" cy="-10" rx="5.5" ry="10" fill="#6b7c3d" transform="rotate(288)" opacity="0.7"/>
-      <circle cx="0" cy="0" r="6" fill="#c8d48a" opacity="0.8"/>
-    </g>
-  </g>
-</svg>
-
 <audio id="music" loop preload="auto">
   <source src="Que Suerte Tenerte.mp3" type="audio/mpeg">
 </audio>
